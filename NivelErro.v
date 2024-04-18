@@ -1,21 +1,12 @@
 // Declaracao do modulo
-module NivelErro (H, 
-						M,
-						L, 
-						Ve, 
-						Al, 
-						Err, 
-						Nv_Critico,
-						Nv_Baixo,
-						Nv_Medio,
-						Nv_Alto);
+module NivelErro (H, M, L, Ve, Al, Err, Nv_Critico, Nv_Baixo, Nv_Medio, Nv_Alto);
 
 	// Declaracao de portas
 	input H, M, L;
 	output Ve, Al, Err, Nv_Critico, Nv_Baixo, Nv_Medio, Nv_Alto;
 	
 	// Declaracao dos fios intermediarios
-	wire Wire_nh, Wire_nm, wire_nE1, wire_nE2, Wire_V;
+	wire Wire_nh, Wire_nm, Wire_nl, wire_nE1, wire_nE2, Wire_V;
 	
 	// Funcionamento do circuito
 	
@@ -25,9 +16,9 @@ module NivelErro (H,
 	not l1 (Wire_nl, L);
 	
 	// Nivel Critico (Caso a espressão booleana H'.M'.L')
-	// and crit (Nv_Critico, Wire_nh, Wire_nm, Wire_nl);
-	nor crit (Nv_Critico, H, M, L); //Porta logica NOR tem o mesmo retorno da negação das 3 portas
-
+	//Porta logica NOR tem o mesmo retorno da negação das 3 portas
+	nor crit (Nv_Critico, H, M, L);
+	
 	// Nivel Baixo (Caso a espressão booleana H'.M'.L)
 	and bai (Nv_Baixo, Wire_nh, Wire_nm, L);
 	
