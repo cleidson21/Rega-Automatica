@@ -1,10 +1,10 @@
 // Declaracao do modulo
-module Mostrador7 (Nv_Critico, Nv_Baixo, Nv_Medio, Nv_Alto,  Err, Bs, Vs, Sd, SEG_D1, 
+module Mostrador7 (Nv_Critico, Nv_Baixo, Nv_Medio, Nv_Alto, ERRO, Bs, Vs, Sd, SEG_D1, 
 						  SEG_D2, SEG_D3, SEG_D4, SEGs[0], SEGs[1], SEGs[2], SEGs[3], SEGs[4],
 						  SEGs[5], SEGs[6]);  
 
 	// Declaracao de portas
-	input Nv_Critico, Nv_Baixo, Nv_Medio, Nv_Alto, Err, Bs, Vs, Sd;
+	input Nv_Critico, Nv_Baixo, Nv_Medio, Nv_Alto, ERRO, Bs, Vs, Sd;
 	output [6:0] SEGs;
 	output SEG_D1, SEG_D2, SEG_D3, SEG_D4; 
 	
@@ -30,7 +30,7 @@ module Mostrador7 (Nv_Critico, Nv_Baixo, Nv_Medio, Nv_Alto,  Err, Bs, Vs, Sd, SE
 	and mbai (wire_Mba, Wire_nsd, Nv_Baixo);
 	and mmed (wire_Mme, Wire_nsd, Nv_Medio);
 	and malt (wire_Mal, Wire_nsd, Nv_Alto);
-	and merr (wire_Mer, Wire_nsd, Err);
+	and merr (wire_Mer, Wire_nsd, ERRO);
 	
 	// Tipo de Rega
 	and mbs (wire_Mbs, Sd, Bs);
