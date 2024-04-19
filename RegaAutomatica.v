@@ -10,20 +10,18 @@ module RegaAutomatica (H, M, L, Us, Ua, T, Sd, Ve, Al,
 	output SEG_A, SEG_B, SEG_C, SEG_D, SEG_E, SEG_F, SEG_G;
 	
 	// Declaracao dos fios intermediarios
-	wire wire_crit, wire_bai, wire_med, wire_alt, wire_err;
+	wire Nv_Critico, Nv_Baixo, Nv_Medio, Nv_Alto, ERRO;
 	
 	// Funcionamento do circuito
 	
 	// Modulo de tratamento de Nivel, Erro, Entrada da Caixa e Alarme.
-	NivelErro NvE1 (H, M, L, Ve, Al, wire_err, wire_crit, wire_bai, wire_med, wire_alt);
+	NivelErro NvE1 (H, M, L, Ve, Al, ERRO, Nv_Critico, Nv_Baixo, Nv_Medio, Nv_Alto);
 	
 	// Modulo de Tipo de Irrigação
-	Irrigacao Irr1 (Us, Ua, T, wire_med, wire_bai, wire_err, Bs, Vs);
+	Irrigacao Irr1 (Us, Ua, T, M, L, ERRO, Bs, Vs);
 	
 	//Modulo de Controle do Mostrador de & segmentos
-	Mostrador7 Most1 (wire_crit, wire_bai, wire_med, wire_alt, wire_err, Bs, Vs, Sd, 
+	Mostrador7 Most1 (Nv_Critico, Nv_Baixo, Nv_Medio, Nv_Alto, ERRO, Bs, Vs, Sd,  
 	SEG_D1, SEG_D2, SEG_D3, SEG_D4, SEG_A, SEG_B, SEG_C, SEG_D, SEG_E, SEG_F, SEG_G);
-	
-
 	
 endmodule 
