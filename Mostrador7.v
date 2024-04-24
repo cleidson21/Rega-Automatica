@@ -1,12 +1,12 @@
 // Declaracao do modulo
-module Mostrador7 (Nv_Critico, Nv_Baixo, Nv_Medio, Nv_Alto, ERRO, Bs, Vs, Sd, SEG_D1, 
-						  SEG_D2, SEG_D3, SEG_D4, SEGs[0], SEGs[1], SEGs[2], SEGs[3], SEGs[4],
-						  SEGs[5], SEGs[6]);  
+module Mostrador7 (Nv_Critico, Nv_Baixo, Nv_Medio, Nv_Alto, ERRO, Bs, Vs, Sd, 
+						  SEG_D1, SEG_D2, SEG_D3, SEG_D4, SEGs[0], SEGs[1], SEGs[2], SEGs[3], SEGs[4],
+						  SEGs[5], SEGs[6], SEG_P);  
 
 	// Declaracao de portas
 	input Nv_Critico, Nv_Baixo, Nv_Medio, Nv_Alto, ERRO, Bs, Vs, Sd;
 	output [6:0] SEGs;
-	output SEG_D1, SEG_D2, SEG_D3, SEG_D4; 
+	output SEG_D1, SEG_D2, SEG_D3, SEG_D4, SEG_P; 
 	
 	// Declaracao dos fios intermediarios
 	wire wire_Mcr, wire_Mba, wire_Mme, wire_Mal, wire_Mer, wire_Mbs, wire_Mvs;
@@ -17,6 +17,7 @@ module Mostrador7 (Nv_Critico, Nv_Baixo, Nv_Medio, Nv_Alto, ERRO, Bs, Vs, Sd, SE
 	not (SEG_D2, 0);
 	not (SEG_D3, 0);
 	not (SEG_D4, 0);
+	not (SEG_P, 0);
 	
 	// Funcionamento do circuito
 	
