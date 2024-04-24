@@ -39,6 +39,6 @@ module NivelErro (H, M, L, Ve, Al, ERRO, Nv_Critico, Nv_Baixo, Nv_Medio, Nv_Alto
 	and ve2 (Ve, Wire_V, Wire_nh);
 	
 	// Tratamento do Alarme
-	or al (Al, Wire_nh, Wire_nl);
+	or al (Al, Wire_nm, Wire_nl);
 	
 endmodule 
