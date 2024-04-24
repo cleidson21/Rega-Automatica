@@ -56,9 +56,9 @@ set_location_assignment PIN_33 -to Us
 set_location_assignment PIN_30 -to Ua
 set_location_assignment PIN_34 -to T
 set_location_assignment PIN_36 -to Sd
-set_location_assignment PIN_38 -to L
+set_location_assignment PIN_42 -to L
 set_location_assignment PIN_40 -to M
-set_location_assignment PIN_42 -to H
+set_location_assignment PIN_38 -to H
 set_location_assignment PIN_57 -to Vs
 set_location_assignment PIN_54 -to Ve
 set_location_assignment PIN_55 -to Bs
@@ -73,3 +73,8 @@ set_location_assignment PIN_39 -to SEG_G
 set_location_assignment PIN_66 -to SEG_D2
 set_location_assignment PIN_68 -to SEG_D3
 set_location_assignment PIN_37 -to SEG_D4
+set_global_assignment -name VECTOR_WAVEFORM_FILE TesteRega.vwf
+set_location_assignment PIN_96 -to SEG_P
+set_location_assignment PIN_86 -to LED_R
+set_location_assignment PIN_72 -to LED_G
+set_location_assignment PIN_74 -to LED_B
