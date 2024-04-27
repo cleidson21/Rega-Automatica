@@ -1,46 +1,57 @@
 // Declaracao do modulo
-module Mostrador7 (Nv_Critico, Nv_Baixo, Nv_Medio, Nv_Alto, ERRO, Bs, Vs, Sd, 
-						  SEG_D1, SEG_D2, SEG_D3, SEG_D4, SEGs[0], SEGs[1], SEGs[2], SEGs[3], SEGs[4],
-						  SEGs[5], SEGs[6], SEG_P);  
+module Mostrador7 (H, M, L, Bs, Vs, Sd, SEG_D1, SEG_D2, SEG_D3, SEG_D4, 
+						 SEGs[0], SEGs[1], SEGs[2], SEGs[3], SEGs[4], SEGs[5], SEGs[6], SEG_P
+						 );  
 
 	// Declaracao de portas
-	input Nv_Critico, Nv_Baixo, Nv_Medio, Nv_Alto, ERRO, Bs, Vs, Sd;
+	input H, M, L, Bs, Vs, Sd;
 	output [6:0] SEGs;
 	output SEG_D1, SEG_D2, SEG_D3, SEG_D4, SEG_P; 
 	
 	// Declaracao dos fios intermediarios
-	wire wire_Mcr, wire_Mba, wire_Mme, wire_Mal, wire_Mer, wire_Mbs, wire_Mvs;
+	wire Wire_nSd, Wire_nh, Wire_nm, Wire_nl, Wire_NBs_Vs, Wire_NVs_Bs;
+	wire Wire_A0_1, Wire_A0_2, Wire_A0_3, Wire_A1_1, Wire_A2_1, Wire_A2_2;
 	wire Wire_SegE1, Wire_SegE2, Wire_SegF1, Wire_SegF2, Wire_SegG1, Wire_SegG2;
-	wire [2:0] Cdg;
 	wire Wire_Ncdg0, Wire_Ncdg1, Wire_Ncdg2, Wire_Ncdg3;
+	wire [2:0] Cdg;
+	
+	// Funcionamento do circuito
+	
+	//Seleção de segmento a ser utilizado
 	not (SEG_D1, 1);
 	not (SEG_D2, 0);
 	not (SEG_D3, 0);
 	not (SEG_D4, 0);
 	not (SEG_P, 0);
 	
-	// Funcionamento do circuito
-	
-	// Fios com negações da entrada de Seleção de Visualização
-	not sd1 (Wire_nsd, Sd);	
-	
-	// Tratamento do tipo de Visualização
-	
-	// Niveis (Alto, Medio, Baixo, Critico e Erro)
-	and mcrit (wire_Mcr, Wire_nsd, Nv_Critico);
-	and mbai (wire_Mba, Wire_nsd, Nv_Baixo);
-	and mmed (wire_Mme, Wire_nsd, Nv_Medio);
-	and malt (wire_Mal, Wire_nsd, Nv_Alto);
-	and merr (wire_Mer, Wire_nsd, ERRO);
-	
-	// Tipo de Rega
-	and mbs (wire_Mbs, Sd, Bs);
-	and mvs (wire_Mvs, Sd, Vs);
+	// Fios com negações das entradas
+	not Not_Sd1 (Wire_nSd, Sd);
+	not Not_H1 (Wire_nh, H);
+	not Not_M1 (Wire_nm, M);
+	not Not_L1 (Wire_nl, L);
+	not Not_Bs1 (Wire_nBs, Bs);
+	not Not_Vs1 (Wire_nVs, Vs);
 	
 	// Codificador Entradas para binario 8 digitos
-	or Codificar0 (Cdg[0], wire_Mcr, wire_Mme, wire_Mer, wire_Mvs);
-	or Codificar1 (Cdg[1], wire_Mba, wire_Mme, wire_Mbs, wire_Mvs);
-	or Codificar2 (Cdg[2], wire_Mal, wire_Mer, wire_Mbs, wire_Mvs);
+	
+	//Tipo de Rega
+	and NBs_Vs (Wire_NBs_Vs, Sd, Wire_nBs, Vs);
+	and NVs_Bs (Wire_NVs_Bs, Sd, Wire_nVs, Bs);
+	
+	//Bit A0
+	and A0_And1 (Wire_A0_1, Wire_nSd, Wire_nl);
+	and A0_And2 (Wire_A0_2, Wire_nSd, Wire_nh, M);
+	and A0_And3 (Wire_A0_3, Wire_nSd, Wire_nm ,H);
+	or Codificar0 (Cdg[0], Wire_A0_1, Wire_A0_2, Wire_A0_3, Wire_NBs_Vs);
+	
+	//Bit A1
+	and A1_And1 (Wire_A1_1, Wire_nSd, Wire_nh, L);
+	or Codificar1 (Cdg[1], Wire_A1_1, Wire_NBs_Vs, Wire_NVs_Bs);
+	
+	//Bit A2
+	and A2_And1 (Wire_A2_1, Wire_nSd, Wire_nl, M);
+	and A2_And2 (Wire_A2_2, Wire_nSd, H);
+	or Codificar2 (Cdg[2], Wire_A2_1, Wire_A2_2, Wire_NBs_Vs, Wire_NVs_Bs);
 	
 	//Negacao das entradas binarias do Codificador
 	not nCodidificar0 (Wire_Ncdg0, Cdg[0]);
