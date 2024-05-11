@@ -11,7 +11,7 @@ module Mostrador7 (H, M, L, Bs, Vs, Sd, SEG_D1, SEG_D2, SEG_D3, SEG_D4,
 	// Declaracao dos fios intermediarios
 	wire Wire_nSd, Wire_nh, Wire_nm, Wire_nl, Wire_NBs_Vs, Wire_NVs_Bs;
 	wire Wire_A0_1, Wire_A0_2, Wire_A0_3, Wire_A1_1, Wire_A2_1, Wire_A2_2;
-	wire Wire_SegE1, Wire_SegE2, Wire_SegF1, Wire_SegF2, Wire_SegG1, Wire_SegG2;
+	wire Wire_SegD1, Wire_SegD2, Wire_SegE1, Wire_SegE2, Wire_SegE3, Wire_SegF1;
 	wire Wire_Ncdg0, Wire_Ncdg1, Wire_Ncdg2, Wire_Ncdg3;
 	wire [2:0] Cdg;
 	
@@ -61,24 +61,30 @@ module Mostrador7 (H, M, L, Bs, Vs, Sd, SEG_D1, SEG_D2, SEG_D3, SEG_D4,
 	//Decodificador dos Segmentos do Mostrador 7 elementos
 	
 	//Segmanto A
-	or segA (SEGs[0], Cdg[1], Wire_Ncdg2);
+	or segA (SEGs[0], Wire_Ncdg2);
+	
 	//Segmento B	
-	not SegB(SEGs[1], 0); 
+	or SegB(SEGs[1], Wire_Ncdg1, Wire_Ncdg2); 
+	
 	//Segmento C
 	or SegC (SEGs[2], Wire_Ncdg2, Wire_Ncdg1); 
+	
 	//Segmento D
-	and SegD (SEGs[3], Wire_Ncdg2, Wire_Ncdg1, Wire_Ncdg0); 
+	and SegD1 (Wire_SegD1, Wire_Ncdg2, Wire_Ncdg1, Wire_Ncdg0);
+	and SegD2 (Wire_SegD2, Cdg[2], Cdg[1], Wire_Ncdg0);
+	or SegD (SEGs[3], Wire_SegD1, Wire_SegD2);
+	
 	//Segmento E 
-	and SegE1 (Wire_SegE1, Wire_Ncdg2, Cdg[1]); 
-	and SegE2 (Wire_SegE2, Wire_Ncdg1, Wire_Ncdg0); 
-	or SegE (SEGs[4], Wire_SegE1, Wire_SegE2);
+	and SegE1 (Wire_SegE1, Wire_Ncdg1, Wire_Ncdg0);
+	and SegE2 (Wire_SegE2, Cdg[1], Cdg[0]);
+	and SegE3 (Wire_SegE3, Wire_Ncdg2, Wire_Ncdg0);
+	or SegE (SEGs[4], Wire_SegE1, Wire_SegE2, Wire_SegE3);
+	
 	//Segmento F
-	and SegF1 (Wire_SegF1, Wire_Ncdg1, Wire_Ncdg0 );
-	and SegF2 (Wire_SegF2,Cdg[1], Cdg[0]);
-	or SegF (SEGs[5], Wire_SegF1, Wire_SegF2, Wire_Ncdg2);
+	and SegF1 (Wire_SegF1, Wire_Ncdg1, Wire_Ncdg0);
+	or SegF (SEGs[5], Wire_SegF1, Wire_Ncdg2);
+	
 	//Segmento G
-	and SegG1 (Wire_SegG1, Wire_Ncdg2, Wire_Ncdg0); 
-	and SegG2 (Wire_SegG2, Cdg[2], Cdg[1], Cdg[0]); 
-	or SegG (SEGs[6], Wire_SegG1, Wire_SegG2);
+	and SegG (SEGs[6], Wire_Ncdg0, Wire_Ncdg2);
 	
 endmodule 

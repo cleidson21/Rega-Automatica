@@ -51,7 +51,7 @@ set_global_assignment -name VERILOG_FILE NivelErro.v
 set_global_assignment -name VERILOG_FILE RegaAutomatica.v
 set_global_assignment -name VERILOG_FILE Irrigacao.v
 set_global_assignment -name VERILOG_FILE Mostrador7.v
-set_location_assignment PIN_76 -to Al
+set_location_assignment PIN_86 -to Al
 set_location_assignment PIN_33 -to Us
 set_location_assignment PIN_30 -to Ua
 set_location_assignment PIN_34 -to T
@@ -75,6 +75,3 @@ set_location_assignment PIN_68 -to SEG_D3
 set_location_assignment PIN_37 -to SEG_D4
 set_global_assignment -name VECTOR_WAVEFORM_FILE TesteRega.vwf
 set_location_assignment PIN_96 -to SEG_P
-set_location_assignment PIN_86 -to LED_R
-set_location_assignment PIN_72 -to LED_G
-set_location_assignment PIN_74 -to LED_B
