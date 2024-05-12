@@ -25,13 +25,13 @@ module Irrigacao (Us, Ua, T, M, L, ERRO, Bs, Vs);
 	// Tratamento do tipo de Rega
 	
 	// Bomba de Aspersão
-	and bs1 (wire_bs1, Wire_nt, M);
-	or bs2 (wire_bs2, wire_bs1, Wire_ua);
-	and bs3 (Bs, wire_onf, wire_bs2);
+	and bs1 (wire_bs1, wire_onf, Wire_ua);
+	and bs2 (wire_bs2, wire_onf, Wire_nt, M);
+	or bs3 (Bs, wire_bs1, wire_bs2);
 	
-	// Valvula de Gotejamento
-	or vs1 (wire_vs1, T, Wire_nm);
-	and vs2 (wire_vs2, wire_vs1, Ua);
-	and vs3 (Vs, wire_onf, wire_vs2);
+	// Valvula de Gotejamento 
+	and vs1 (wire_vs1, wire_onf, Ua, Wire_nm);
+	and vs2 (wire_vs2, wire_onf, Ua, T);
+	or vs3 (Vs, wire_vs1, wire_vs2);
 
 endmodule 
