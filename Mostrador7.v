@@ -9,7 +9,7 @@ module Mostrador7 (H, M, L, Bs, Vs, Sd, SEG_D1, SEG_D2, SEG_D3, SEG_D4,
 	output SEG_D1, SEG_D2, SEG_D3, SEG_D4, SEG_P; 
 	
 	// Declaracao dos fios intermediarios
-	wire Wire_nSd, Wire_nh, Wire_nm, Wire_nl, Wire_NBs_Vs, Wire_NVs_Bs;
+	wire Wire_nSd, Wire_nh, Wire_nm, Wire_nl;
 	wire Wire_A0_1, Wire_A0_2, Wire_A0_3, Wire_A1_1, Wire_A2_1, Wire_A2_2;
 	wire Wire_SegD1, Wire_SegD2, Wire_SegE1, Wire_SegE2, Wire_SegE3, Wire_SegF1;
 	wire Wire_Ncdg0, Wire_Ncdg1, Wire_Ncdg2, Wire_Ncdg3;
@@ -29,28 +29,26 @@ module Mostrador7 (H, M, L, Bs, Vs, Sd, SEG_D1, SEG_D2, SEG_D3, SEG_D4,
 	not Not_H1 (Wire_nh, H);
 	not Not_M1 (Wire_nm, M);
 	not Not_L1 (Wire_nl, L);
-	not Not_Bs1 (Wire_nBs, Bs);
-	not Not_Vs1 (Wire_nVs, Vs);
-	
+
 	// Codificador Entradas para binario 8 digitos
 	
 	//Tipo de Rega
-	and NBs_Vs (Wire_NBs_Vs, Sd, Wire_nBs, Vs);
-	and NVs_Bs (Wire_NVs_Bs, Sd, Wire_nVs, Bs);
+	and NBs_Vs (Wire_NBs_Vs, Sd, Vs);
+	and NVs_Bs (Wire_NVs_Bs, Sd, Bs);
 	
-	//Bit A0
-	and A0_And1 (Wire_A0_1, Wire_nSd, Wire_nl);
-	and A0_And2 (Wire_A0_2, Wire_nSd, Wire_nh, M);
-	and A0_And3 (Wire_A0_3, Wire_nSd, Wire_nm ,H);
+	//Bit B0
+	and B0_And1 (Wire_A0_1, Wire_nSd, Wire_nl);
+	and B0_And2 (Wire_A0_2, Wire_nSd, Wire_nh, M);
+	and B0_And3 (Wire_A0_3, Wire_nSd, Wire_nm ,H);
 	or Codificar0 (Cdg[0], Wire_A0_1, Wire_A0_2, Wire_A0_3, Wire_NBs_Vs);
 	
-	//Bit A1
-	and A1_And1 (Wire_A1_1, Wire_nSd, Wire_nh, L);
+	//Bit B1
+	and B1_And1 (Wire_A1_1, Wire_nSd, Wire_nh, L);
 	or Codificar1 (Cdg[1], Wire_A1_1, Wire_NBs_Vs, Wire_NVs_Bs);
 	
-	//Bit A2
-	and A2_And1 (Wire_A2_1, Wire_nSd, Wire_nl, M);
-	and A2_And2 (Wire_A2_2, Wire_nSd, H);
+	//Bit B2
+	and B2_And1 (Wire_A2_1, Wire_nSd, Wire_nl, M);
+	and B2_And2 (Wire_A2_2, Wire_nSd, H);
 	or Codificar2 (Cdg[2], Wire_A2_1, Wire_A2_2, Wire_NBs_Vs, Wire_NVs_Bs);
 	
 	//Negacao das entradas binarias do Codificador
