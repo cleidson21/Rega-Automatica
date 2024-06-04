@@ -1,11 +1,11 @@
 // Declaracao do modulo
 module RegaAutomatica (H, M, L, Us, Ua, T, Sd, clock, Ve, Al, 
 							  Bs, Vs, SEG_D1, SEG_D2, SEG_D3, SEG_D4, SEG_A, SEG_B, 
-							  SEG_C, SEG_D, SEG_E, SEG_F, SEG_G, SEG_P, linhas_Matriz, Colunas_Matriz);	
+							  SEG_C, SEG_D, SEG_E, SEG_F, SEG_G, SEG_P, linhas_Matriz, Colunas_Matriz, osciloscopio);	
 							  
 	// Declaracao de portas
 	input H, M, L, Us, Ua, T, Sd, clock;
-	output Bs, Vs, Ve, Al; 
+	output Bs, Vs, Ve, Al, osciloscopio; 
 	output SEG_D1, SEG_D2, SEG_D3, SEG_D4;
 	output SEG_A, SEG_B, SEG_C, SEG_D, SEG_E, SEG_F, SEG_G, SEG_P;
 	output [6:0] linhas_Matriz;
@@ -13,7 +13,7 @@ module RegaAutomatica (H, M, L, Us, Ua, T, Sd, clock, Ve, Al,
 	
 	// Declaracao dos fios intermediarios
 	wire [2:0] Seletor_Linhas;
-	wire [2:0] Seletor_imagem;
+	wire Seletor_imagem;
 	wire ERRO, clock_matriz, clock_display;
 	wire Nv_Critico, Nv_Baixo, Nv_Medio, Nv_Alto;
 	wire out, I0, I1, I2, I3, I4, I5, I6, I7, S;
@@ -42,13 +42,14 @@ module RegaAutomatica (H, M, L, Us, Ua, T, Sd, clock, Ve, Al,
 	Matriz_7x5 Mtrx1 (.img_sel(Seletor_imagem), 
 							.lin(linhas_Matriz), 
 							.col(Colunas_Matriz), 
-							.Sel(Seletor_Linhas),
-							.Crit(Nv_Critico), 
-							.Baix(Nv_Baixo), 
-							.Medi(Nv_Medio), 
+							.Clock_Linhas(Seletor_Linhas),
+							.Critico(Nv_Critico), 
+							.Baixo(Nv_Baixo), 
+							.Medio(Nv_Medio), 
 							.Alto(Nv_Alto),
-							.Aspe(Bs),
-							.Gote(Vs)
+							.Aspersao(Bs),
+							.Gotejamento(Vs)
 	);
 
+	assign osciloscopio = Seletor_imagem;	
 endmodule 

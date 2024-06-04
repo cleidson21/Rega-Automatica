@@ -6,13 +6,13 @@ module DivisorClock (clock, clock_matriz, clock_display, Seletor_imagem, Seletor
    output clock_matriz;
    output clock_display;
 	output [2:0] Seletor_Linhas;
-	output [2:0] Seletor_imagem;
+	output Seletor_imagem;
 
 
    // Fios intermediários
 	wire reset, T;
-   wire [17:0] Q;
-   wire [21:0] Qb;
+   wire [19:0] Q;
+   wire [23:0] Qb;
 	 
 	not NotT (T, 0);
 
@@ -155,7 +155,7 @@ module DivisorClock (clock, clock_matriz, clock_display, Seletor_imagem, Seletor
    fft div_65536 (
 			.T(T),
 			.clock(Qb[14]),
-			.Q(Q[15]),
+			.Q(Seletor_Linhas[0]),
 			.Qb(Qb[15]),
 			.reset(reset)
    );
@@ -164,7 +164,7 @@ module DivisorClock (clock, clock_matriz, clock_display, Seletor_imagem, Seletor
    fft div_131072 (
 			.T(T),
 			.clock(Qb[15]),
-			.Q(Seletor_Linhas[0]),
+			.Q(Seletor_Linhas[1]),
 			.Qb(Qb[16]),
 			.reset(reset)
    );
@@ -173,7 +173,7 @@ module DivisorClock (clock, clock_matriz, clock_display, Seletor_imagem, Seletor
    fft div_262144 (
 			.T(T),
 			.clock(Qb[16]),
-			.Q(Seletor_Linhas[1]),
+			.Q(Seletor_Linhas[2]),
 			.Qb(Qb[17]),
 			.reset(reset)
    );
@@ -182,7 +182,7 @@ module DivisorClock (clock, clock_matriz, clock_display, Seletor_imagem, Seletor
    fft div_524288 (
 			.T(T),
 			.clock(Qb[17]),
-			.Q(Seletor_Linhas[2]),
+			.Q(Q[15]),
 			.Qb(Qb[18]),
 			.reset(reset)
    );
@@ -191,7 +191,7 @@ module DivisorClock (clock, clock_matriz, clock_display, Seletor_imagem, Seletor
    fft div_1048576 (
 			.T(T),
 			.clock(Qb[18]),
-			.Q(Seletor_imagem[0]),
+			.Q(Q[16]),
 			.Qb(Qb[19]),
 			.reset(reset)
    );
@@ -200,7 +200,7 @@ module DivisorClock (clock, clock_matriz, clock_display, Seletor_imagem, Seletor
    fft div_2097152 (
 			.T(T),
 			.clock(Qb[19]),
-			.Q(Seletor_imagem[1]),
+			.Q(Q[17]),
 			.Qb(Qb[20]),
 			.reset(reset)
    );
@@ -209,10 +209,27 @@ module DivisorClock (clock, clock_matriz, clock_display, Seletor_imagem, Seletor
    fft div_4194304 (
 			.T(T),
 			.clock(Qb[20]),
-			.Q(Seletor_imagem[2]),
+			.Q(Q[18]),
 			.Qb(Qb[21]),
 			.reset(reset)
    );
 	
+	// Módulo fft para dividir o clock por 8388608 (5,9604644775390625 hz)
+   fft div_8388608 (
+			.T(T),
+			.clock(Qb[21]),
+			.Q(Q[19]),
+			.Qb(Qb[22]),
+			.reset(reset)
+   );
+	
+	// Módulo fft para dividir o clock por 16777216 (2,98023223876953125 hz)
+   fft div_16777216 (
+			.T(T),
+			.clock(Qb[22]),
+			.Q(Seletor_imagem),
+			.Qb(Qb[23]),
+			.reset(reset)
+   );
 
 endmodule 
