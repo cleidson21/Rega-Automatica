@@ -1,18 +1,19 @@
 //Implementação de um flip-flop do tipo JK
 
-module flipflopJK(J, K, Clk, Q);
+module flipflopJK(J, K, Reset, Preset, Clk, q);
 
-input J, K, Clk;
-output Q;
-reg q;
+input J, K, Reset, Preset, Clk;
+output reg q;
 
-//Seta o valor inicial de Q como 0
-initial begin
-	q=1'b0;
-end
-
-always @(posedge Clk)
+always @(posedge Clk or posedge Preset or posedge Reset)
 begin
+	//Implementa o reset
+	if(Reset)begin
+		q=0;
+	//Implementa o preset
+	end else if(Preset)begin
+		q=1;
+	end
 	case({J, K})
 		2'b00:q=q;
 		2'b01:q=0;
