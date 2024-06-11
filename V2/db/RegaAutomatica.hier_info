@@ -1,0 +1,451 @@
+|RegaAutomatica
+H => H.IN1
+M => M.IN2
+L => L.IN2
+Us => Us.IN1
+Ua => Ua.IN1
+T => T.IN1
+Sd => ~NO_FANOUT~
+Rst => Rst.IN1
+clock => clock.IN1
+Ve <= NivelErro:NvE1.port3
+Al <= NivelErro:NvE1.port4
+Bs <= Bs.DB_MAX_OUTPUT_PORT_TYPE
+Vs <= Vs.DB_MAX_OUTPUT_PORT_TYPE
+SEG_D1 <= <VCC>
+SEG_D2 <= <VCC>
+SEG_D3 <= <VCC>
+SEG_D4 <= <GND>
+SEG_A <= decode:comb_7.port4
+SEG_B <= decode:comb_7.port5
+SEG_C <= decode:comb_7.port6
+SEG_D <= decode:comb_7.port7
+SEG_E <= decode:comb_7.port8
+SEG_F <= decode:comb_7.port9
+SEG_G <= decode:comb_7.port10
+SEG_P <= decode:comb_7.port11
+linhas_Matriz[0] <= Matriz_7x5:Mtrx1.lin
+linhas_Matriz[1] <= Matriz_7x5:Mtrx1.lin
+linhas_Matriz[2] <= Matriz_7x5:Mtrx1.lin
+linhas_Matriz[3] <= Matriz_7x5:Mtrx1.lin
+linhas_Matriz[4] <= Matriz_7x5:Mtrx1.lin
+linhas_Matriz[5] <= Matriz_7x5:Mtrx1.lin
+linhas_Matriz[6] <= Matriz_7x5:Mtrx1.lin
+Colunas_Matriz[0] <= Matriz_7x5:Mtrx1.col
+Colunas_Matriz[1] <= Matriz_7x5:Mtrx1.col
+Colunas_Matriz[2] <= Matriz_7x5:Mtrx1.col
+Colunas_Matriz[3] <= Matriz_7x5:Mtrx1.col
+Colunas_Matriz[4] <= Matriz_7x5:Mtrx1.col
+osciloscopio <= Seletor_imagem.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|NivelErro:NvE1
+H => N_alt.IN0
+H => err2.IN0
+H => N_cri.IN0
+H => N_bai.IN0
+H => N_med.IN0
+H => ve2.IN1
+M => N_med.IN1
+M => N_alt.IN1
+M => err1.IN0
+M => N_cri.IN1
+M => N_bai.IN1
+M => err2.IN1
+M => ve1.IN0
+M => al.IN0
+L => N_bai.IN2
+L => N_med.IN2
+L => N_alt.IN2
+L => ve1.IN1
+L => N_cri.IN2
+L => err1.IN1
+L => al.IN1
+Ve <= ve2.DB_MAX_OUTPUT_PORT_TYPE
+Al <= al.DB_MAX_OUTPUT_PORT_TYPE
+ERRO <= err3.DB_MAX_OUTPUT_PORT_TYPE
+Nv_Critico <= N_cri.DB_MAX_OUTPUT_PORT_TYPE
+Nv_Baixo <= N_bai.DB_MAX_OUTPUT_PORT_TYPE
+Nv_Medio <= N_med.DB_MAX_OUTPUT_PORT_TYPE
+Nv_Alto <= N_alt.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|Irrigacao:Irr1
+Us => on_Off.IN0
+Ua => vs1.IN1
+Ua => vs2.IN1
+Ua => bs1.IN1
+T => vs2.IN2
+T => bs2.IN1
+M => bs2.IN2
+M => vs1.IN2
+L => on_Off.IN1
+ERRO => on_Off.IN2
+Bs <= bs3.DB_MAX_OUTPUT_PORT_TYPE
+Vs <= vs3.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1
+clock => clock.IN1
+clock_matriz <= <GND>
+clock_display <= <GND>
+Seletor_imagem <= fft:div_16777216.Q
+Seletor_Linhas[0] <= Seletor_Linhas[0].DB_MAX_OUTPUT_PORT_TYPE
+Seletor_Linhas[1] <= Seletor_Linhas[1].DB_MAX_OUTPUT_PORT_TYPE
+Seletor_Linhas[2] <= Seletor_Linhas[2].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_2
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_4
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_8
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_16
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_32
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_64
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_128
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_256
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_512
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_1024
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_2048
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_4096
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_8192
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_16384
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_32768
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_65536
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_131072
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_262144
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_524288
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_1048576
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_2097152
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_4194304
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_8388608
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|DivisorClock:Div1|fft:div_16777216
+T => Q~reg0.ENA
+clock => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|Matriz_7x5:Mtrx1
+img_sel => Imagem_Aspersao.IN0
+img_sel => Imagem_Gotejamento.IN0
+img_sel => Imagem_Baixo.IN0
+img_sel => Imagem_Medio.IN0
+img_sel => Imagem_Alto.IN0
+lin[0] <= demux_1x7:Linhas7.Out0
+lin[1] <= demux_1x7:Linhas7.Out1
+lin[2] <= demux_1x7:Linhas7.Out2
+lin[3] <= demux_1x7:Linhas7.Out3
+lin[4] <= demux_1x7:Linhas7.Out4
+lin[5] <= demux_1x7:Linhas7.Out5
+lin[6] <= demux_1x7:Linhas7.Out6
+col[0] <= decod_Colunas:Colunas5.Out0
+col[1] <= decod_Colunas:Colunas5.Out1
+col[2] <= decod_Colunas:Colunas5.Out2
+col[3] <= decod_Colunas:Colunas5.Out3
+col[4] <= decod_Colunas:Colunas5.Out4
+Clock_Linhas[0] => Clock_Linhas[0].IN2
+Clock_Linhas[1] => Clock_Linhas[1].IN2
+Clock_Linhas[2] => Clock_Linhas[2].IN2
+Critico => Imagem_Critico.DATAIN
+Baixo => Imagem_Baixo.IN1
+Medio => Imagem_Medio.IN1
+Alto => Imagem_Alto.IN1
+Aspersao => Imagem_Aspersao.IN1
+Gotejamento => Imagem_Gotejamento.IN1
+
+
+|RegaAutomatica|Matriz_7x5:Mtrx1|demux_1x7:Linhas7
+in => WideAnd0.IN0
+in => WideAnd1.IN0
+in => WideAnd2.IN0
+in => WideAnd3.IN0
+in => WideAnd4.IN0
+in => WideAnd5.IN0
+S[0] => WideAnd0.IN1
+S[0] => WideAnd2.IN1
+S[0] => WideAnd4.IN1
+S[0] => WideAnd1.IN1
+S[0] => WideAnd3.IN1
+S[0] => WideAnd5.IN1
+S[1] => WideAnd1.IN2
+S[1] => WideAnd2.IN2
+S[1] => WideAnd5.IN2
+S[1] => WideAnd0.IN2
+S[1] => WideAnd3.IN2
+S[1] => WideAnd4.IN2
+S[2] => WideAnd3.IN3
+S[2] => WideAnd4.IN3
+S[2] => WideAnd5.IN3
+S[2] => WideAnd0.IN3
+S[2] => WideAnd1.IN3
+S[2] => WideAnd2.IN3
+Out0 <= <GND>
+Out1 <= WideAnd0.DB_MAX_OUTPUT_PORT_TYPE
+Out2 <= WideAnd1.DB_MAX_OUTPUT_PORT_TYPE
+Out3 <= WideAnd2.DB_MAX_OUTPUT_PORT_TYPE
+Out4 <= WideAnd3.DB_MAX_OUTPUT_PORT_TYPE
+Out5 <= WideAnd4.DB_MAX_OUTPUT_PORT_TYPE
+Out6 <= WideAnd5.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|Matriz_7x5:Mtrx1|decod_Colunas:Colunas5
+Critico => Crit1.IN0
+Critico => M1_C0.IN2
+Critico => M1_C4.IN2
+Baixo => Baix1.IN1
+Baixo => M1_C0.IN3
+Baixo => M1_C4.IN3
+Medio => Medio1.IN1
+Medio => M1_C0.IN4
+Medio => M1_C4.IN4
+Alto => M1_C0.IN5
+Alto => M1_C1.IN5
+Alto => M1_C2.IN5
+Alto => M1_C3.IN5
+Alto => M1_C4.IN5
+Aspersao => Asper1.IN0
+Aspersao => Asper2.IN1
+Aspersao => Asper3.IN1
+Gotejamento => Gotej1.IN0
+Gotejamento => Gotej2.IN1
+Gotejamento => Gotej3.IN1
+S[0] => and1.IN0
+S[0] => and3.IN0
+S[0] => and5.IN0
+S[0] => Crit1.IN1
+S[0] => Asper1.IN1
+S[0] => Gotej1.IN1
+S[0] => and4.IN0
+S[0] => and7.IN0
+S[1] => and2.IN0
+S[1] => and3.IN1
+S[1] => and5.IN1
+S[1] => Crit1.IN2
+S[1] => Asper1.IN2
+S[1] => Aux4.IN1
+S[1] => Aux6.IN0
+S[1] => and4.IN1
+S[1] => and6.IN0
+S[1] => Gotej1.IN2
+S[2] => and1.IN1
+S[2] => and2.IN1
+S[2] => and5.IN2
+S[2] => and6.IN1
+S[2] => and7.IN1
+S[2] => Crit1.IN3
+S[2] => Aux2.IN1
+S[2] => Gotej1.IN3
+S[2] => Aux6.IN1
+Out0 <= M1_C0.DB_MAX_OUTPUT_PORT_TYPE
+Out1 <= M1_C1.DB_MAX_OUTPUT_PORT_TYPE
+Out2 <= M1_C2.DB_MAX_OUTPUT_PORT_TYPE
+Out3 <= M1_C3.DB_MAX_OUTPUT_PORT_TYPE
+Out4 <= M1_C4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|cont_dec:comb_3
+Clk => Clk.IN4
+Rst => Rst.IN4
+Q3 <= flipflopJK:comb_15.port5
+Q2 <= flipflopJK:comb_14.port5
+Q1 <= flipflopJK:comb_13.port5
+Q0 <= flipflopJK:comb_12.port5
+
+
+|RegaAutomatica|cont_dec:comb_3|flipflopJK:comb_12
+J => Mux0.IN3
+K => Mux0.IN4
+Reset => q~reg0.ACLR
+Reset => q.IN0
+Preset => q.IN1
+Clk => q~reg0.CLK
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|cont_dec:comb_3|flipflopJK:comb_13
+J => Mux0.IN3
+K => Mux0.IN4
+Reset => q~reg0.ACLR
+Reset => q.IN0
+Preset => q.IN1
+Clk => q~reg0.CLK
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|cont_dec:comb_3|flipflopJK:comb_14
+J => Mux0.IN3
+K => Mux0.IN4
+Reset => q~reg0.ACLR
+Reset => q.IN0
+Preset => q.IN1
+Clk => q~reg0.CLK
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|cont_dec:comb_3|flipflopJK:comb_15
+J => Mux0.IN3
+K => Mux0.IN4
+Reset => q~reg0.ACLR
+Reset => q.IN0
+Preset => q.IN1
+Clk => q~reg0.CLK
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegaAutomatica|decode:comb_7
+C3 => And1.IN0
+C3 => And9.IN0
+C3 => And10.IN0
+C2 => And0.IN0
+C2 => And2.IN0
+C2 => And11.IN0
+C2 => And4.IN0
+C2 => And6.IN0
+C2 => And1.IN1
+C2 => And3.IN0
+C2 => And8.IN0
+C2 => And9.IN1
+C2 => And10.IN1
+C1 => And11.IN1
+C1 => And3.IN1
+C1 => And4.IN1
+C1 => And7.IN0
+C1 => And8.IN1
+C1 => And0.IN1
+C1 => And1.IN2
+C1 => And2.IN1
+C1 => And6.IN1
+C1 => And10.IN2
+C0 => And1.IN3
+C0 => And2.IN2
+C0 => And4.IN2
+C0 => Or3.IN1
+C0 => And7.IN1
+C0 => And9.IN2
+C0 => And0.IN2
+C0 => And11.IN2
+C0 => And3.IN2
+SEG_A <= Or0.DB_MAX_OUTPUT_PORT_TYPE
+SEG_B <= Or1.DB_MAX_OUTPUT_PORT_TYPE
+SEG_C <= And3.DB_MAX_OUTPUT_PORT_TYPE
+SEG_D <= Or2.DB_MAX_OUTPUT_PORT_TYPE
+SEG_E <= Or3.DB_MAX_OUTPUT_PORT_TYPE
+SEG_F <= Or4.DB_MAX_OUTPUT_PORT_TYPE
+SEG_G <= Or5.DB_MAX_OUTPUT_PORT_TYPE
+SEG_P <= <VCC>
+
+

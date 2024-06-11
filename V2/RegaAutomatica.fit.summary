@@ -1,0 +1,11 @@
+Fitter Status : Successful - Tue Jun 11 17:36:12 2024
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : RegaAutomatica
+Top-level Entity Name : RegaAutomatica
+Family : MAX II
+Device : EPM240T100C5
+Timing Models : Final
+Total logic elements : 55 / 240 ( 23 % )
+Total pins : 38 / 80 ( 48 % )
+Total virtual pins : 0
+UFM blocks : 0 / 1 ( 0 % )

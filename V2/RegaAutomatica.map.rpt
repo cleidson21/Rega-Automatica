@@ -1,0 +1,675 @@
+Analysis & Synthesis report for RegaAutomatica
+Tue Jun 11 17:36:07 2024
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. General Register Statistics
+  9. Inverted Register Statistics
+ 10. Port Connectivity Checks: "cont_dec:comb_3|flipflopJK:comb_15"
+ 11. Port Connectivity Checks: "cont_dec:comb_3|flipflopJK:comb_14"
+ 12. Port Connectivity Checks: "cont_dec:comb_3|flipflopJK:comb_13"
+ 13. Port Connectivity Checks: "cont_dec:comb_3|flipflopJK:comb_12"
+ 14. Port Connectivity Checks: "Matriz_7x5:Mtrx1|demux_1x7:Linhas7"
+ 15. Port Connectivity Checks: "DivisorClock:Div1|fft:div_16777216"
+ 16. Port Connectivity Checks: "DivisorClock:Div1|fft:div_8388608"
+ 17. Port Connectivity Checks: "DivisorClock:Div1|fft:div_4194304"
+ 18. Port Connectivity Checks: "DivisorClock:Div1|fft:div_2097152"
+ 19. Port Connectivity Checks: "DivisorClock:Div1|fft:div_1048576"
+ 20. Port Connectivity Checks: "DivisorClock:Div1|fft:div_524288"
+ 21. Port Connectivity Checks: "DivisorClock:Div1|fft:div_262144"
+ 22. Port Connectivity Checks: "DivisorClock:Div1|fft:div_131072"
+ 23. Port Connectivity Checks: "DivisorClock:Div1|fft:div_65536"
+ 24. Port Connectivity Checks: "DivisorClock:Div1|fft:div_32768"
+ 25. Port Connectivity Checks: "DivisorClock:Div1|fft:div_16384"
+ 26. Port Connectivity Checks: "DivisorClock:Div1|fft:div_8192"
+ 27. Port Connectivity Checks: "DivisorClock:Div1|fft:div_4096"
+ 28. Port Connectivity Checks: "DivisorClock:Div1|fft:div_2048"
+ 29. Port Connectivity Checks: "DivisorClock:Div1|fft:div_1024"
+ 30. Port Connectivity Checks: "DivisorClock:Div1|fft:div_512"
+ 31. Port Connectivity Checks: "DivisorClock:Div1|fft:div_256"
+ 32. Port Connectivity Checks: "DivisorClock:Div1|fft:div_128"
+ 33. Port Connectivity Checks: "DivisorClock:Div1|fft:div_64"
+ 34. Port Connectivity Checks: "DivisorClock:Div1|fft:div_32"
+ 35. Port Connectivity Checks: "DivisorClock:Div1|fft:div_16"
+ 36. Port Connectivity Checks: "DivisorClock:Div1|fft:div_8"
+ 37. Port Connectivity Checks: "DivisorClock:Div1|fft:div_4"
+ 38. Port Connectivity Checks: "DivisorClock:Div1|fft:div_2"
+ 39. Port Connectivity Checks: "DivisorClock:Div1"
+ 40. Analysis & Synthesis Messages
+ 41. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++---------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                              ;
++-----------------------------+---------------------------------------------+
+; Analysis & Synthesis Status ; Successful - Tue Jun 11 17:36:07 2024       ;
+; Quartus Prime Version       ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name               ; RegaAutomatica                              ;
+; Top-level Entity Name       ; RegaAutomatica                              ;
+; Family                      ; MAX II                                      ;
+; Total logic elements        ; 55                                          ;
+; Total pins                  ; 38                                          ;
+; Total virtual pins          ; 0                                           ;
+; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
++-----------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EPM240T100C5       ;                    ;
+; Top-level entity name                                            ; RegaAutomatica     ; RegaAutomatica     ;
+; Family name                                                      ; MAX II             ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                  ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                              ; Library ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------+---------+
+; regaautomatica.v                 ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v ;         ;
+; nivelerro.v                      ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/User/Desktop/Rega-Automatica/V2/nivelerro.v      ;         ;
+; irrigacao.v                      ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/User/Desktop/Rega-Automatica/V2/irrigacao.v      ;         ;
+; divisorclock.v                   ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/User/Desktop/Rega-Automatica/V2/divisorclock.v   ;         ;
+; fft.v                            ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/User/Desktop/Rega-Automatica/V2/fft.v            ;         ;
+; matriz_7x5.v                     ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/User/Desktop/Rega-Automatica/V2/matriz_7x5.v     ;         ;
+; demux_1x7.v                      ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/User/Desktop/Rega-Automatica/V2/demux_1x7.v      ;         ;
+; decod_colunas.v                  ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/User/Desktop/Rega-Automatica/V2/decod_colunas.v  ;         ;
+; cont_dec.v                       ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/User/Desktop/Rega-Automatica/V2/cont_dec.v       ;         ;
+; flipflopjk.v                     ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/User/Desktop/Rega-Automatica/V2/flipflopjk.v     ;         ;
+; decode.v                         ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/User/Desktop/Rega-Automatica/V2/decode.v         ;         ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                        ;
++---------------------------------------------+--------------------------------------+
+; Resource                                    ; Usage                                ;
++---------------------------------------------+--------------------------------------+
+; Total logic elements                        ; 55                                   ;
+;     -- Combinational with no register       ; 27                                   ;
+;     -- Register only                        ; 0                                    ;
+;     -- Combinational with a register        ; 28                                   ;
+;                                             ;                                      ;
+; Logic element usage by number of LUT inputs ;                                      ;
+;     -- 4 input functions                    ; 19                                   ;
+;     -- 3 input functions                    ; 8                                    ;
+;     -- 2 input functions                    ; 3                                    ;
+;     -- 1 input functions                    ; 25                                   ;
+;     -- 0 input functions                    ; 0                                    ;
+;                                             ;                                      ;
+; Logic elements by mode                      ;                                      ;
+;     -- normal mode                          ; 55                                   ;
+;     -- arithmetic mode                      ; 0                                    ;
+;     -- qfbk mode                            ; 0                                    ;
+;     -- register cascade mode                ; 0                                    ;
+;     -- synchronous clear/load mode          ; 0                                    ;
+;     -- asynchronous clear/load mode         ; 4                                    ;
+;                                             ;                                      ;
+; Total registers                             ; 28                                   ;
+; I/O pins                                    ; 38                                   ;
+; Maximum fan-out node                        ; cont_dec:comb_3|flipflopJK:comb_12|q ;
+; Maximum fan-out                             ; 11                                   ;
+; Total fan-out                               ; 182                                  ;
+; Average fan-out                             ; 1.96                                 ;
++---------------------------------------------+--------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                           ;
++--------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------------------------------------------+----------------+--------------+
+; Compilation Hierarchy Node     ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                                     ; Entity Name    ; Library Name ;
++--------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------------------------------------------+----------------+--------------+
+; |RegaAutomatica                ; 55 (0)      ; 28           ; 0          ; 38   ; 0            ; 27 (0)       ; 0 (0)             ; 28 (0)           ; 0 (0)           ; 0 (0)      ; |RegaAutomatica                                         ; RegaAutomatica ; work         ;
+;    |DivisorClock:Div1|         ; 24 (0)      ; 24           ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 24 (0)           ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1                       ; DivisorClock   ; work         ;
+;       |fft:div_1024|           ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_1024          ; fft            ; work         ;
+;       |fft:div_1048576|        ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_1048576       ; fft            ; work         ;
+;       |fft:div_128|            ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_128           ; fft            ; work         ;
+;       |fft:div_131072|         ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_131072        ; fft            ; work         ;
+;       |fft:div_16384|          ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_16384         ; fft            ; work         ;
+;       |fft:div_16777216|       ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_16777216      ; fft            ; work         ;
+;       |fft:div_16|             ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_16            ; fft            ; work         ;
+;       |fft:div_2048|           ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_2048          ; fft            ; work         ;
+;       |fft:div_2097152|        ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_2097152       ; fft            ; work         ;
+;       |fft:div_256|            ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_256           ; fft            ; work         ;
+;       |fft:div_262144|         ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_262144        ; fft            ; work         ;
+;       |fft:div_2|              ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_2             ; fft            ; work         ;
+;       |fft:div_32768|          ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_32768         ; fft            ; work         ;
+;       |fft:div_32|             ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_32            ; fft            ; work         ;
+;       |fft:div_4096|           ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_4096          ; fft            ; work         ;
+;       |fft:div_4194304|        ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_4194304       ; fft            ; work         ;
+;       |fft:div_4|              ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_4             ; fft            ; work         ;
+;       |fft:div_512|            ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_512           ; fft            ; work         ;
+;       |fft:div_524288|         ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_524288        ; fft            ; work         ;
+;       |fft:div_64|             ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_64            ; fft            ; work         ;
+;       |fft:div_65536|          ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_65536         ; fft            ; work         ;
+;       |fft:div_8192|           ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_8192          ; fft            ; work         ;
+;       |fft:div_8388608|        ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_8388608       ; fft            ; work         ;
+;       |fft:div_8|              ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|DivisorClock:Div1|fft:div_8             ; fft            ; work         ;
+;    |Irrigacao:Irr1|            ; 3 (3)       ; 0            ; 0          ; 0    ; 0            ; 3 (3)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|Irrigacao:Irr1                          ; Irrigacao      ; work         ;
+;    |Matriz_7x5:Mtrx1|          ; 15 (0)      ; 0            ; 0          ; 0    ; 0            ; 15 (0)       ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|Matriz_7x5:Mtrx1                        ; Matriz_7x5     ; work         ;
+;       |decod_Colunas:Colunas5| ; 15 (15)     ; 0            ; 0          ; 0    ; 0            ; 15 (15)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|Matriz_7x5:Mtrx1|decod_Colunas:Colunas5 ; decod_Colunas  ; work         ;
+;    |NivelErro:NvE1|            ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|NivelErro:NvE1                          ; NivelErro      ; work         ;
+;    |cont_dec:comb_3|           ; 5 (1)       ; 4            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 4 (0)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|cont_dec:comb_3                         ; cont_dec       ; work         ;
+;       |flipflopJK:comb_12|     ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|cont_dec:comb_3|flipflopJK:comb_12      ; flipflopJK     ; work         ;
+;       |flipflopJK:comb_13|     ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|cont_dec:comb_3|flipflopJK:comb_13      ; flipflopJK     ; work         ;
+;       |flipflopJK:comb_14|     ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|cont_dec:comb_3|flipflopJK:comb_14      ; flipflopJK     ; work         ;
+;       |flipflopJK:comb_15|     ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|cont_dec:comb_3|flipflopJK:comb_15      ; flipflopJK     ; work         ;
+;    |decode:comb_7|             ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RegaAutomatica|decode:comb_7                           ; decode         ; work         ;
++--------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------------------------------------------+----------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 28    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 4     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 2     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; cont_dec:comb_3|flipflopJK:comb_12|q   ; 11      ;
+; cont_dec:comb_3|flipflopJK:comb_15|q   ; 7       ;
+; Total number of inverted registers = 2 ;         ;
++----------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "cont_dec:comb_3|flipflopJK:comb_15"                                                                                                                                                    ;
++-----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port      ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Reset     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Reset[-1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++-----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "cont_dec:comb_3|flipflopJK:comb_14"                                                                                                                                                     ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port       ; Type  ; Severity ; Details                                                                                                                                                                            ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Preset     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Preset[-1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "cont_dec:comb_3|flipflopJK:comb_13"                                                                                                                                                     ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port       ; Type  ; Severity ; Details                                                                                                                                                                            ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Preset     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Preset[-1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "cont_dec:comb_3|flipflopJK:comb_12"                                                                                                                                                    ;
++-----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port      ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; J         ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; J[-1]     ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; K         ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; K[-1]     ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; Reset     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Reset[-1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++-----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------+
+; Port Connectivity Checks: "Matriz_7x5:Mtrx1|demux_1x7:Linhas7" ;
++------+-------+----------+--------------------------------------+
+; Port ; Type  ; Severity ; Details                              ;
++------+-------+----------+--------------------------------------+
+; in   ; Input ; Info     ; Stuck at GND                         ;
++------+-------+----------+--------------------------------------+
+
+
++----------------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_16777216" ;
++------+-------+----------+--------------------------------------+
+; Port ; Type  ; Severity ; Details                              ;
++------+-------+----------+--------------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                         ;
++------+-------+----------+--------------------------------------+
+
+
++---------------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_8388608" ;
++------+-------+----------+-------------------------------------+
+; Port ; Type  ; Severity ; Details                             ;
++------+-------+----------+-------------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                        ;
++------+-------+----------+-------------------------------------+
+
+
++---------------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_4194304" ;
++------+-------+----------+-------------------------------------+
+; Port ; Type  ; Severity ; Details                             ;
++------+-------+----------+-------------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                        ;
++------+-------+----------+-------------------------------------+
+
+
++---------------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_2097152" ;
++------+-------+----------+-------------------------------------+
+; Port ; Type  ; Severity ; Details                             ;
++------+-------+----------+-------------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                        ;
++------+-------+----------+-------------------------------------+
+
+
++---------------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_1048576" ;
++------+-------+----------+-------------------------------------+
+; Port ; Type  ; Severity ; Details                             ;
++------+-------+----------+-------------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                        ;
++------+-------+----------+-------------------------------------+
+
+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_524288" ;
++------+-------+----------+------------------------------------+
+; Port ; Type  ; Severity ; Details                            ;
++------+-------+----------+------------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                       ;
++------+-------+----------+------------------------------------+
+
+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_262144" ;
++------+-------+----------+------------------------------------+
+; Port ; Type  ; Severity ; Details                            ;
++------+-------+----------+------------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                       ;
++------+-------+----------+------------------------------------+
+
+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_131072" ;
++------+-------+----------+------------------------------------+
+; Port ; Type  ; Severity ; Details                            ;
++------+-------+----------+------------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                       ;
++------+-------+----------+------------------------------------+
+
+
++-------------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_65536" ;
++------+-------+----------+-----------------------------------+
+; Port ; Type  ; Severity ; Details                           ;
++------+-------+----------+-----------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                      ;
++------+-------+----------+-----------------------------------+
+
+
++-------------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_32768" ;
++------+-------+----------+-----------------------------------+
+; Port ; Type  ; Severity ; Details                           ;
++------+-------+----------+-----------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                      ;
++------+-------+----------+-----------------------------------+
+
+
++-------------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_16384" ;
++------+-------+----------+-----------------------------------+
+; Port ; Type  ; Severity ; Details                           ;
++------+-------+----------+-----------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                      ;
++------+-------+----------+-----------------------------------+
+
+
++------------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_8192" ;
++------+-------+----------+----------------------------------+
+; Port ; Type  ; Severity ; Details                          ;
++------+-------+----------+----------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                     ;
++------+-------+----------+----------------------------------+
+
+
++------------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_4096" ;
++------+-------+----------+----------------------------------+
+; Port ; Type  ; Severity ; Details                          ;
++------+-------+----------+----------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                     ;
++------+-------+----------+----------------------------------+
+
+
++------------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_2048" ;
++------+-------+----------+----------------------------------+
+; Port ; Type  ; Severity ; Details                          ;
++------+-------+----------+----------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                     ;
++------+-------+----------+----------------------------------+
+
+
++------------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_1024" ;
++------+-------+----------+----------------------------------+
+; Port ; Type  ; Severity ; Details                          ;
++------+-------+----------+----------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                     ;
++------+-------+----------+----------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_512" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                    ;
++------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_256" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                    ;
++------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_128" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                    ;
++------+-------+----------+---------------------------------+
+
+
++----------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_64" ;
++------+-------+----------+--------------------------------+
+; Port ; Type  ; Severity ; Details                        ;
++------+-------+----------+--------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                   ;
++------+-------+----------+--------------------------------+
+
+
++----------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_32" ;
++------+-------+----------+--------------------------------+
+; Port ; Type  ; Severity ; Details                        ;
++------+-------+----------+--------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                   ;
++------+-------+----------+--------------------------------+
+
+
++----------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_16" ;
++------+-------+----------+--------------------------------+
+; Port ; Type  ; Severity ; Details                        ;
++------+-------+----------+--------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                   ;
++------+-------+----------+--------------------------------+
+
+
++---------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_8" ;
++------+-------+----------+-------------------------------+
+; Port ; Type  ; Severity ; Details                       ;
++------+-------+----------+-------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                  ;
++------+-------+----------+-------------------------------+
+
+
++---------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_4" ;
++------+-------+----------+-------------------------------+
+; Port ; Type  ; Severity ; Details                       ;
++------+-------+----------+-------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                  ;
++------+-------+----------+-------------------------------+
+
+
++---------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1|fft:div_2" ;
++------+-------+----------+-------------------------------+
+; Port ; Type  ; Severity ; Details                       ;
++------+-------+----------+-------------------------------+
+; T    ; Input ; Info     ; Stuck at VCC                  ;
++------+-------+----------+-------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "DivisorClock:Div1"                                                                           ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port          ; Type   ; Severity ; Details                                                                             ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; clock_matriz  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; clock_display ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Processing started: Tue Jun 11 17:35:56 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RegaAutomatica -c RegaAutomatica
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Warning (12125): Using design file regaautomatica.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: RegaAutomatica File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 2
+Critical Warning (10846): Verilog HDL Instantiation warning at regaautomatica.v(56): instance has no name File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 56
+Critical Warning (10846): Verilog HDL Instantiation warning at regaautomatica.v(62): instance has no name File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 62
+Info (12127): Elaborating entity "RegaAutomatica" for the top level hierarchy
+Warning (10739): Verilog HDL warning at regaautomatica.v(59): actual bit length 32 differs from formal bit length 1 File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 59
+Warning (10739): Verilog HDL warning at regaautomatica.v(60): actual bit length 32 differs from formal bit length 1 File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 60
+Warning (10739): Verilog HDL warning at regaautomatica.v(61): actual bit length 32 differs from formal bit length 1 File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 61
+Warning (10034): Output port "SEG_D4" at regaautomatica.v(9) has no driver File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 9
+Warning (12125): Using design file nivelerro.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: NivelErro File: C:/Users/User/Desktop/Rega-Automatica/V2/nivelerro.v Line: 2
+Info (12128): Elaborating entity "NivelErro" for hierarchy "NivelErro:NvE1" File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 25
+Warning (12125): Using design file irrigacao.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: Irrigacao File: C:/Users/User/Desktop/Rega-Automatica/V2/irrigacao.v Line: 2
+Warning (10236): Verilog HDL Implicit Net warning at irrigacao.v(18): created implicit net for "Wire_nh" File: C:/Users/User/Desktop/Rega-Automatica/V2/irrigacao.v Line: 18
+Warning (10236): Verilog HDL Implicit Net warning at irrigacao.v(18): created implicit net for "H" File: C:/Users/User/Desktop/Rega-Automatica/V2/irrigacao.v Line: 18
+Info (12128): Elaborating entity "Irrigacao" for hierarchy "Irrigacao:Irr1" File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 28
+Warning (10275): Verilog HDL Module Instantiation warning at divisorclock.v(21): ignored dangling comma in List of Port Connections File: C:/Users/User/Desktop/Rega-Automatica/V2/divisorclock.v Line: 21
+Warning (10275): Verilog HDL Module Instantiation warning at divisorclock.v(28): ignored dangling comma in List of Port Connections File: C:/Users/User/Desktop/Rega-Automatica/V2/divisorclock.v Line: 28
+Warning (12125): Using design file divisorclock.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: DivisorClock File: C:/Users/User/Desktop/Rega-Automatica/V2/divisorclock.v Line: 2
+Info (12128): Elaborating entity "DivisorClock" for hierarchy "DivisorClock:Div1" File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 40
+Warning (10034): Output port "clock_matriz" at divisorclock.v(6) has no driver File: C:/Users/User/Desktop/Rega-Automatica/V2/divisorclock.v Line: 6
+Warning (10034): Output port "clock_display" at divisorclock.v(7) has no driver File: C:/Users/User/Desktop/Rega-Automatica/V2/divisorclock.v Line: 7
+Warning (12125): Using design file fft.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: fft File: C:/Users/User/Desktop/Rega-Automatica/V2/fft.v Line: 2
+Info (12128): Elaborating entity "fft" for hierarchy "DivisorClock:Div1|fft:div_2" File: C:/Users/User/Desktop/Rega-Automatica/V2/divisorclock.v Line: 21
+Warning (10275): Verilog HDL Module Instantiation warning at matriz_7x5.v(30): ignored dangling comma in List of Port Connections File: C:/Users/User/Desktop/Rega-Automatica/V2/matriz_7x5.v Line: 30
+Warning (12125): Using design file matriz_7x5.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: Matriz_7x5 File: C:/Users/User/Desktop/Rega-Automatica/V2/matriz_7x5.v Line: 2
+Info (12128): Elaborating entity "Matriz_7x5" for hierarchy "Matriz_7x5:Mtrx1" File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 53
+Warning (12125): Using design file demux_1x7.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: demux_1x7 File: C:/Users/User/Desktop/Rega-Automatica/V2/demux_1x7.v Line: 2
+Info (12128): Elaborating entity "demux_1x7" for hierarchy "Matriz_7x5:Mtrx1|demux_1x7:Linhas7" File: C:/Users/User/Desktop/Rega-Automatica/V2/matriz_7x5.v Line: 30
+Warning (10034): Output port "Out0" at demux_1x7.v(7) has no driver File: C:/Users/User/Desktop/Rega-Automatica/V2/demux_1x7.v Line: 7
+Warning (12125): Using design file decod_colunas.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: decod_Colunas File: C:/Users/User/Desktop/Rega-Automatica/V2/decod_colunas.v Line: 2
+Info (12128): Elaborating entity "decod_Colunas" for hierarchy "Matriz_7x5:Mtrx1|decod_Colunas:Colunas5" File: C:/Users/User/Desktop/Rega-Automatica/V2/matriz_7x5.v Line: 53
+Warning (12125): Using design file cont_dec.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: cont_dec File: C:/Users/User/Desktop/Rega-Automatica/V2/cont_dec.v Line: 3
+Critical Warning (10846): Verilog HDL Instantiation warning at cont_dec.v(28): instance has no name File: C:/Users/User/Desktop/Rega-Automatica/V2/cont_dec.v Line: 28
+Critical Warning (10846): Verilog HDL Instantiation warning at cont_dec.v(29): instance has no name File: C:/Users/User/Desktop/Rega-Automatica/V2/cont_dec.v Line: 29
+Critical Warning (10846): Verilog HDL Instantiation warning at cont_dec.v(30): instance has no name File: C:/Users/User/Desktop/Rega-Automatica/V2/cont_dec.v Line: 30
+Critical Warning (10846): Verilog HDL Instantiation warning at cont_dec.v(31): instance has no name File: C:/Users/User/Desktop/Rega-Automatica/V2/cont_dec.v Line: 31
+Info (12128): Elaborating entity "cont_dec" for hierarchy "cont_dec:comb_3" File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 56
+Warning (12125): Using design file flipflopjk.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: flipflopJK File: C:/Users/User/Desktop/Rega-Automatica/V2/flipflopjk.v Line: 3
+Info (12128): Elaborating entity "flipflopJK" for hierarchy "cont_dec:comb_3|flipflopJK:comb_12" File: C:/Users/User/Desktop/Rega-Automatica/V2/cont_dec.v Line: 28
+Warning (12125): Using design file decode.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: decode File: C:/Users/User/Desktop/Rega-Automatica/V2/decode.v Line: 3
+Info (12128): Elaborating entity "decode" for hierarchy "decode:comb_7" File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 62
+Warning (10739): Verilog HDL warning at decode.v(64): actual bit length 32 differs from formal bit length 1 File: C:/Users/User/Desktop/Rega-Automatica/V2/decode.v Line: 64
+Info (13014): Ignored 1 buffer(s)
+    Info (13019): Ignored 1 SOFT buffer(s)
+Warning (12241): 4 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "SEG_D1" is stuck at VCC File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 9
+    Warning (13410): Pin "SEG_D2" is stuck at VCC File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 9
+    Warning (13410): Pin "SEG_D3" is stuck at VCC File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 9
+    Warning (13410): Pin "SEG_D4" is stuck at GND File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 9
+    Warning (13410): Pin "SEG_P" is stuck at VCC File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 10
+    Warning (13410): Pin "linhas_Matriz[0]" is stuck at GND File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 11
+    Warning (13410): Pin "linhas_Matriz[1]" is stuck at GND File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 11
+    Warning (13410): Pin "linhas_Matriz[2]" is stuck at GND File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 11
+    Warning (13410): Pin "linhas_Matriz[3]" is stuck at GND File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 11
+    Warning (13410): Pin "linhas_Matriz[4]" is stuck at GND File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 11
+    Warning (13410): Pin "linhas_Matriz[5]" is stuck at GND File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 11
+    Warning (13410): Pin "linhas_Matriz[6]" is stuck at GND File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 11
+Info (18000): Registers with preset signals will power-up high File: C:/Users/User/Desktop/Rega-Automatica/V2/flipflopjk.v Line: 6
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "Sd" File: C:/Users/User/Desktop/Rega-Automatica/V2/regaautomatica.v Line: 7
+Info (21057): Implemented 93 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 9 input pins
+    Info (21059): Implemented 29 output pins
+    Info (21061): Implemented 55 logic cells
+Info (144001): Generated suppressed messages file C:/Users/User/Desktop/Rega-Automatica/V2/RegaAutomatica.map.smsg
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 47 warnings
+    Info: Peak virtual memory: 4708 megabytes
+    Info: Processing ended: Tue Jun 11 17:36:07 2024
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:23
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/User/Desktop/Rega-Automatica/V2/RegaAutomatica.map.smsg.
+
+
