@@ -1,25 +1,33 @@
 //Definição do módulo Contador de Dezena Decrescente
 
-module cont_dec(Clk, Q);
+module cont_dec(Clk, Rst, Q3, Q2, Q1, Q0);
 
-input Clk;
+input Clk, Rst;
 
-output [3:0] Q;
+output Q3, Q2, Q1, Q0;
 
 
 //Fios intermediários
-wire [3:0] J;
-wire [3:0] K;
-wire Wire1, Wire2;
+wire Wire1, Wire2, Wire3, Wire4, Wire5, Wire6;
+wire Q2n, Q1n, Q0n;
 
-or Or1(Wire1, J[1], Q[3], Q[2]);
-or Or2(Wire2, K[1], Q[1], Q[2]);
+not Not0(Q2n, Q2);
+not Not1(Q1n, Q1);
+not Not2(Q0n, Q0);
+
+and And0(Wire2, Q2, Q0n);
+and And1(Wire3, Q3, Q0n);
+and And2(Wire4, Q3, Q0n);
+and And3(Wire5, Q1n, Q0n);
+and And4(Wire6, Q2n, Q1n, Q0n);
+
+or Or0(Wire1, Wire2, Wire3);
 
 
 //Flip-flops JK usados para fazer o contador
-flipflopJK(1, 1, 0, 0, Clk, Q[0]);
-flipflopJK(Wire1, Wire2, 0, 0, Clk, Q[1]);
-flipflopJK(0, Q[3], 0, 0, Clk, Q[3]);
-flipflopJK(Q[3], Q[2], 0, 0, Clk, Q[2]);
+flipflopJK(1, 1, 0, Rst, Clk, Q0);
+flipflopJK(Wire1, Q0n, Rst, 0, Clk, Q1);
+flipflopJK(Wire4, Wire5, Rst, 0, Clk, Q2);
+flipflopJK(Wire6, Q0n, 0, Rst, Clk, Q3);
 
 endmodule
