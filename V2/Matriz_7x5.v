@@ -1,3 +1,4 @@
+
 module Matriz_7x5 (img_sel, lin, col, Clock_Linhas, Critico, Baixo, Medio, Alto, Aspersao, Gotejamento);
 
 	// Declaracao de portas
@@ -28,16 +29,16 @@ module Matriz_7x5 (img_sel, lin, col, Clock_Linhas, Critico, Baixo, Medio, Alto,
         .Out6(lin[6]),
     );
 	
-	// Seletor de imagem com alternância pelo seletor com clock
-	and Imagem_Critico (Coluna_Crit, Not_Img_sel, Critico);
+	// Seletor de imagem com alternância pelo clock
+	and Imagem_Critico (Coluna_Crit, Critico);
 	and Imagem_Baixo (Coluna_Bai, Not_Img_sel, Baixo);
 	and Imagem_Medio (Coluna_Med, Not_Img_sel, Medio);
 	and Imagem_Alto (Coluna_Alt, Not_Img_sel, Alto);
 	and Imagem_Aspersao (Coluna_Asp, img_sel, Aspersao);
 	and Imagem_Gotejamento (Coluna_Got, img_sel, Gotejamento);
-	
-	// Demultiplexação para a saída das colunas
-	demux_Colunas Colunas5 (.Critico(Coluna_Crit), 
+
+	// Decodificacao para a saída das colunas
+	decod_Colunas Colunas5 (.Critico(Coluna_Crit), 
 									.Baixo(Coluna_Bai), 
 									.Medio(Coluna_Med), 
 									.Alto(Coluna_Alt), 
