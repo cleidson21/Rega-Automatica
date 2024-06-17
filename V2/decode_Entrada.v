@@ -1,9 +1,9 @@
 //Modulo Decodificador da entrada de agua
-module decode_Entrada(Erro, Ve, SEG_A, SEG_B, SEG_C, SEG_D, SEG_E, SEG_F, SEG_G, SEG_P);
+module decode_Entrada(Erro, Ve, SEG_A, SEG_B, SEG_C, SEG_D, SEG_E, SEG_F, SEG_G);
 
 input Erro, Ve;
 
-output SEG_A, SEG_B, SEG_C, SEG_D, SEG_E, SEG_F, SEG_G, SEG_P;
+output SEG_A, SEG_B, SEG_C, SEG_D, SEG_E, SEG_F, SEG_G;
 
 // Entradas negadas
 wire N_Ve;
