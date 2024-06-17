@@ -15,12 +15,15 @@ module Display7Segmento (Clk, Rst, ERRO, Ve, S, SEG_D1, SEG_D2, SEG_D3, SEG_D4,
 	wire Cont_SegA, Cont_SegB, Cont_SegC, Cont_SegD, Cont_SegE, Cont_SegF, Cont_SegG;
 	wire Erro_SegA, Erro_SegB, Erro_SegC, Erro_SegD, Erro_SegE, Erro_SegF, Erro_SegG;
 	
-	cont_2b(Clk, Rst, Sel[1], Sel[0]);
+	cont_2b(S, Rst, Sel[1], Sel[0]);
 	
 	cont_cinco(Clk, Rst, Cont[2], Cont[1], Cont[0]);
 	decode_Contador(ERRO, 0, Cont[2], Cont[1], Cont[0], Cont_SegA, Cont_SegB, Cont_SegC, Cont_SegD, Cont_SegE, Cont_SegF, Cont_SegG);
 	
 	decode_erro(ERRO, Sel[1], Sel[0], Erro_SegA, Erro_SegB, Erro_SegC, Erro_SegD, Erro_SegE, Erro_SegF, Erro_SegG);
+	
+	//Seleciona os segmentos
+	demux_1x4(0, Sel, SEG_D1, SEG_D2, SEG_D3, SEG_D4);
 	
 	// Funcionamento do circuito
 	
