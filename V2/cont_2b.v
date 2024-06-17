@@ -15,8 +15,8 @@ not Not2(Q0n, Q0);
 
 //Flip-flops JK usados para fazer o contador
 //FF0
-flipflopJK(1, 1, Rst, 0, Clk, Q0);
+flipflopJK(1, 1, 0, Rst, Clk, Q0);
 //FF1
-flipflopJK(Q0n, Q0n, Rst, 0, Clk, Q1);
+flipflopJK(Q0n, Q0n, 0, Rst, Clk, Q1);
 
 endmodule
