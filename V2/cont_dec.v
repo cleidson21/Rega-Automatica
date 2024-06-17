@@ -26,8 +26,8 @@ or Or0(Wire1, Wire2, Wire3);
 
 //Flip-flops JK usados para fazer o contador
 flipflopJK(1, 1, 0, Rst, Clk, Q0);
-flipflopJK(Wire1, Q0n, Rst, 0, Clk, Q1);
-flipflopJK(Wire4, Wire5, Rst, 0, Clk, Q2);
+flipflopJK(Wire1, Q0n, 0, Rst, Clk, Q1);
+flipflopJK(Wire4, Wire5, 0, Rst, Clk, Q2);
 flipflopJK(Wire6, Q0n, 0, Rst, Clk, Q3);
 
 endmodule
