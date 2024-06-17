@@ -1,14 +1,17 @@
 // Declaracao do modulo do flip-flop D
-module ffd (D,clk,Q);
+module ffd (D, clk, Q, rst);
 
 	// Declaracao de portas
-	input D; 
+	input D, rst; 
 	input clk;
 	output reg Q; 
 	
-	always @(posedge clk) 
+	always @(posedge clk or posedge rst) 
 		begin
-		 Q <= D; 
+		 if(rst == 1'b1)
+			  Q <= 1'b0; 
+			 else 
+			  Q <= D;
 		end 
 		
 endmodule

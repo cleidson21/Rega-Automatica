@@ -14,14 +14,14 @@ module demux_1x7 (in, S, Out0, Out1, Out2, Out3, Out4, Out5, Out6);
     not (notS1, S[1]);
     not (notS2, S[2]);
 	 
-	 // Saída do demux 1x7 
-	 
-    and (Out1, notS2, notS1, S[0], in);	// S == 3'b001
-    and (Out2, notS2, S[1], notS0, in); 	// S == 3'b010
-    and (Out3, notS2, S[1],  S[0], in); 	// S == 3'b011
-    and (Out4, S[2], notS1, notS0, in); 	// S == 3'b100
-    and (Out5, S[2], notS1,  S[0], in);	// S == 3'b101
-    and (Out6, S[2], S[1],  notS0, in); 	// S == 3'b110
+	 // Decodificador para cada saída do demux 1x7 usando portas "OR" para saida de valor logico BAIXO
+    or (Out0, in, S[2], S[1], notS0);       // S == 001 
+    or (Out1, in, S[2], notS1, S[0]);       // S == 010
+    or (Out2, in, S[2], notS1, notS0);      // S == 011
+    or (Out3, in, notS2, S[1], S[0]);       // S == 100
+    or (Out4, in, notS2, S[1], notS0);      // S == 101
+    or (Out5, in, notS2, notS1, S[0]);     // S == 110
+    or (Out6, in, notS2, notS1, notS0);    // S == 111
 	 
 
 endmodule 
