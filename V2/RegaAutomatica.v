@@ -1,10 +1,10 @@
 // Declaracao do modulo
-module RegaAutomatica (H, M, L, Us, Ua, T, Sd, Rst, clock, Ve, Al,
+module RegaAutomatica (H, M, L, Us, Ua, T, Rst, clock, Ve, Al,
 							  Bs, Vs, SEG_D1, SEG_D2, SEG_D3, SEG_D4, SEG_A, SEG_B, 
 							  SEG_C, SEG_D, SEG_E, SEG_F, SEG_G, SEG_P, linhas_Matriz, Colunas_Matriz, osciloscopio);	
 							  
 	// Declaracao de portas
-	input H, M, L, Us, Ua, T, Sd, Rst, clock;
+	input H, M, L, Us, Ua, T, Rst, clock;
 	output Bs, Vs, Ve, Al, osciloscopio; 
 	output SEG_D1, SEG_D2, SEG_D3, SEG_D4;
 	output SEG_A, SEG_B, SEG_C, SEG_D, SEG_E, SEG_F, SEG_G, SEG_P;
@@ -28,7 +28,7 @@ module RegaAutomatica (H, M, L, Us, Ua, T, Sd, Rst, clock, Ve, Al,
 	Irrigacao Irr1 (Us, Ua, T, M, L, ERRO, Bs, Vs);
 		
 	//Modulo de Controle do Mostrador de 7 segmentos
-	Display7Segmento (Seletor_imagem, Rst, ERRO, Ve,  Seletor_Linhas[2], SEG_D1, SEG_D2, SEG_D3, SEG_D4, 
+	Display7Segmento (Seletor_imagem, Bs, Vs, Rst, ERRO, Ve,  Seletor_Linhas[2], SEG_D1, SEG_D2, SEG_D3, SEG_D4, 
 						 SEG_A, SEG_B, SEG_C, SEG_D, SEG_E, SEG_F, SEG_G, SEG_P
 						 );  
 							
