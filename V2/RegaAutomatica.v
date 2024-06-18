@@ -52,6 +52,4 @@ module RegaAutomatica (H, M, L, Us, Ua, T, Rst, clock, Ve, Al,
 							.Aspersao(Bs),
 							.Gotejamento(Vs)
 	);
-		
-	assign osciloscopio = Seletor_imagem;	
 endmodule 
