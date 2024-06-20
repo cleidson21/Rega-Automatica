@@ -1,16 +1,16 @@
 // Definição do módulo DivisorClock
-module DivisorClock (clock, clock_matriz, clock_display, Seletor_imagem, Seletor_Linhas);
+module DivisorClock (clock, clock_matriz, clock_display, Seletor_imagem, Seletor_Linhas, Contador_Display);
 
 	// Declaracao de portas
    input clock;
    output clock_matriz;
    output clock_display;
 	output [2:0] Seletor_Linhas;
-	output Seletor_imagem;
+	output Seletor_imagem, Contador_Display;
 
 
    // Fios intermediários
-   wire [19:0] Q;
+   wire [18:0] Q;
 
 
    // Módulo fft para dividir o clock por 2 (25Mhz)
@@ -164,20 +164,20 @@ module DivisorClock (clock, clock_matriz, clock_display, Seletor_imagem, Seletor
    fft div_4194304 (
 			.T(1'b1),
 			.clock(Q[17]),
-			.Q(Q[18])
+			.Q(Contador_Display)
    );
 	
 	// Módulo fft para dividir o clock por 8388608 (5,9604644775390625 hz)
    fft div_8388608 (
 			.T(1'b1),
-			.clock(Q[18]),
-			.Q(Q[19])
+			.clock(Contador_Display),
+			.Q(Q[18])
    );
 	
 	// Módulo fft para dividir o clock por 16777216 (2,98023223876953125 hz)
    fft div_16777216 (
 			.T(1'b1),
-			.clock(Q[19]),
+			.clock(Q[18]),
 			.Q(Seletor_imagem)
    );
 

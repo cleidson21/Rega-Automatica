@@ -31,7 +31,7 @@ module Display7Segmento (Clk, Bs, Vs, Rst, ERRO, Ve, S, SEG_D1, SEG_D2, SEG_D3, 
 	wire ContC0, ContC1, ContC2;
 	// Fios do contador 3
 	wire Cont3_SegA, Cont3_SegB, Cont3_SegC, Cont3_SegD, Cont3_SegE, Cont3_SegF, Cont3_SegG;
-	wire ContD2, ContD1, ContD0;
+	wire ContD3, ContD2, ContD1, ContD0;
 	// Fios do contador 4 
 	wire Cont4_SegA, Cont4_SegB, Cont4_SegC, Cont4_SegD, Cont4_SegE, Cont4_SegF, Cont4_SegG;
 	wire ContE0;
@@ -42,23 +42,32 @@ module Display7Segmento (Clk, Bs, Vs, Rst, ERRO, Ve, S, SEG_D1, SEG_D2, SEG_D3, 
 	//Valvula de entrada
 	decode_Entrada(ERRO, Ve, Ve_SegA, Ve_SegB, Ve_SegC, Ve_SegD, Ve_SegE, Ve_SegF, Ve_SegG);
 	
+	//Parada dos contadores
+	wire Cont_off1, Cont_off2, Contador_Geral, Clock_controlado;
+	or (Cont_off1, ContA1, ContA0, ContB3, ContB2, ContB1, ContB0, ContC2, ContC1, ContC0, Bs);
+	or (Cont_off2, ContD3, ContD2, ContD1, ContD0, ContC2, ContC1, ContC0, ContE0, Vs);
+	and (Contador_Geral, Cont_off1, Cont_off2);
+	and (Clock_controlado, Contador_Geral, Clk);
+	
+	
 	//Contadores de 30 minutos
 	//Contador 0
 	cont_2b(ContB3, Rst, ContA1, ContA0);
 	decode_Contador(ERRO, 0, 0, ContA1, ContA0, Cont0_SegA, Cont0_SegB, Cont0_SegC, Cont0_SegD, Cont0_SegE, Cont0_SegF, Cont0_SegG);
 	//Contador 1
-	cont_dec(ContC2, Rst, ContB3, ContB2, ContB1, ContB0);
+	cont_dec(ContC2, Rst, 0, ContB3, ContB2, ContB1, ContB0);
 	decode_Contador(ERRO, ContB3, ContB2, ContB1, ContB0, Cont1_SegA, Cont1_SegB, Cont1_SegC, Cont1_SegD, Cont1_SegE, Cont1_SegF, Cont1_SegG);
 	//Contador 2
-	cont_cinco(Clk, Rst, 0, ContC2, ContC1, ContC0);
+	cont_cinco(Clock_controlado, Rst, ContC2, ContC1, ContC0);
 	decode_Contador(ERRO, 0, ContC2, ContC1, ContC0, Cont2_SegA, Cont2_SegB, Cont2_SegC, Cont2_SegD, Cont2_SegE, Cont2_SegF, Cont2_SegG);
 	
 	//Contadores de 15 minutos
+	
 	//Contador 3
-	cont_cinco(ContC2, 0, Rst, ContD2, ContD1, ContD0);
-	decode_Contador(ERRO, 0, ContD2, ContD1, ContD0, Cont3_SegA, Cont3_SegB, Cont3_SegC, Cont3_SegD, Cont3_SegE, Cont3_SegF, Cont3_SegG);
+	cont_dec(ContC2, 0, Rst, ContD3, ContD2, ContD1, ContD0);
+	decode_Contador(ERRO, ContD3, ContD2, ContD1, ContD0, Cont3_SegA, Cont3_SegB, Cont3_SegC, Cont3_SegD, Cont3_SegE, Cont3_SegF, Cont3_SegG);
 	//Contador 4
-	flipflopJK(1, 1, 0, Rst, ContD2, ContE0);
+	flipflopJK(1, 1, 0, Rst, ContD3, ContE0);
 	decode_Contador(ERRO, 0, 0, 0, ContE0, Cont4_SegA, Cont4_SegB, Cont4_SegC, Cont4_SegD, Cont4_SegE, Cont4_SegF, Cont4_SegG);
 	
 	//Seleciona os segmentos

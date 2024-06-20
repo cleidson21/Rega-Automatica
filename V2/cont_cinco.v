@@ -1,8 +1,8 @@
 //Definição do módulo Contador decrescente de 5 a 0
 
-module cont_cinco(Clk, Pos0, Pos5, Q2, Q1, Q0);
+module cont_cinco(Clk, Pos0, Q2, Q1, Q0);
 
-input Clk, Pos0, Pos5;
+input Clk, Pos0;
 
 output Q2, Q1, Q0;
 
@@ -16,14 +16,13 @@ not Not2(Q0n, Q0);
 
 and And0(Wire1, Q2, Q0n);
 and And1(Wire2, Q1n, Q0n);
-or Or0(Wire3, Pos0, Pos5);
 
 //Flip-flops JK usados para fazer o contador
 //FF0
-flipflopJK(1, 1, Pos0, Pos5, Clk, Q0);
+flipflopJK(1, 1, Pos0, 0, Clk, Q0);
 //FF1
-flipflopJK(Wire1, Q0n, Wire3, 0, Clk, Q1);
+flipflopJK(Wire1, Q0n, Pos0, 0, Clk, Q1);
 //FF2
-flipflopJK(Wire2, Q0n, Pos0, Pos5, Clk, Q2);
+flipflopJK(Wire2, Q0n, Pos0, 0, Clk, Q2);
 
 endmodule
